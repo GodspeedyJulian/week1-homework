@@ -1,0 +1,52 @@
+s=input("input a set of string")
+count = 0
+vowels = set("aeiou")
+for letter in s:
+    if letter in vowels:
+        count += 1
+print("number of vowels:"+ str(count))
+
+
+print("******************************************")
+
+s=input("input a set of string")
+count = 0
+
+for i in range(len(s)):
+    if s[i:].startswith('bob'):
+        count += 1
+print("number of bob:"+ str(count))
+
+
+print("*******************************************")
+
+s=input("input a set of string")
+first=0
+second=1
+stranga=''
+strangb=''
+while second<len(s):
+    if second>=len(s):
+        break
+    elif s[first]<=s[second]:
+        stranga+=s[first:second+1]
+        while second<=len(s):
+            second+=1
+            if second>=len(s):
+                break
+            elif s[second]>=stranga[-1]:
+                stranga+=s[second]
+                if len(stranga)>len(strangb):
+                    strangb=stranga
+            else:
+                if len(stranga)>len(strangb):
+                    strangb=stranga
+                stranga=''
+                first=second-1
+                break
+    else:
+        if len(s[first])>len(strangb):
+            strangb=s[first]
+        first+=1
+        second+=1
+print("Longest substring in alphabetical order is:" + strangb)
